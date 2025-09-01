@@ -51,6 +51,7 @@ function App() {
 
     setHistory((history) => [...history, items]);
     setItems(nextItems);
+    setItemIndexesToDelete([]);
   }
 
   function deleteItem(index: number) {
