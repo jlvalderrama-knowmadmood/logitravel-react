@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PrimaryButton, SecondaryButton } from "../Buttons";
 
 type AddItemModalProps = {
   submit: (event: React.FormEvent, newItem: string) => void;
@@ -28,12 +29,10 @@ function AddItemModalView({ submit, close }: AddItemModalProps) {
           onChange={handleNewItemValueChange}
         />
         <div className="add-new-item-form__actions">
-          <button type="button" onClick={close}>
-            Cancel
-          </button>
-          <button type="submit" disabled={newItemValue === ""}>
+          <SecondaryButton onClick={close}>Cancel</SecondaryButton>
+          <PrimaryButton type="submit" disabled={newItemValue === ""}>
             Add
-          </button>
+          </PrimaryButton>
         </div>
       </form>
     </div>

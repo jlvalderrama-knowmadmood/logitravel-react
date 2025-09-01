@@ -1,6 +1,7 @@
 import { RiResetRightFill } from "react-icons/ri";
 
 import List from "../List";
+import { PrimaryButton, SecondaryButton } from "../Buttons";
 
 type ItemListPanelProps = {
   items: string[];
@@ -38,23 +39,19 @@ function ItemListPanelView({
         deleteItem={deleteItem}
       />
       <div className="actions">
-        <button
-          className="button"
+        <SecondaryButton
           onClick={applyLastHistoryState}
           disabled={history.length === 0}
         >
           <RiResetRightFill />
-        </button>
-        <button
-          className="button"
+        </SecondaryButton>
+        <SecondaryButton
           disabled={itemIndexesToDelete.length === 0}
           onClick={deleteItems}
         >
           Delete
-        </button>
-        <button className="button" onClick={openAddItemModal}>
-          Add
-        </button>
+        </SecondaryButton>
+        <PrimaryButton onClick={openAddItemModal}>Add</PrimaryButton>
       </div>
     </div>
   );
