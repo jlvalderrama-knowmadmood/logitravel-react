@@ -102,12 +102,10 @@ function App() {
                 onChange={handleNewItemValueChange}
               />
               <div className="add-new-item-form__actions">
-                <button onClick={handleCancelProcess}>Cancel</button>
-                <button
-                  type="submit"
-                  onClick={handleAddItemSubmit}
-                  disabled={newItemValue === ""}
-                >
+                <button type="button" onClick={handleCancelProcess}>
+                  Cancel
+                </button>
+                <button type="submit" disabled={newItemValue === ""}>
                   Add
                 </button>
               </div>
