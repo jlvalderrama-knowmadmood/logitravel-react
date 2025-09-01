@@ -33,6 +33,7 @@ function ItemListPanelView({
       </div>
       <List
         items={items}
+        itemsToDelete={itemIndexesToDelete}
         addItemToDelete={addItemToDelete}
         deleteItem={deleteItem}
       />
