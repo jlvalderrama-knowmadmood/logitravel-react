@@ -5,6 +5,7 @@ function App() {
   const [items, setItems] = useState<string[]>([]);
   const [newItemValue, setNewItemValue] = useState<string>("");
   const [itemIndexesToDelete, setItemIndexesToDelete] = useState<number[]>([]);
+  const [history, setHistory] = useState<string[][]>([]);
   const [isAddNewItemModalVisible, setAddNewItemModalVisible] =
     useState<boolean>(false);
 
@@ -17,7 +18,10 @@ function App() {
   function handleAddItemSubmit(event: React.FormEvent) {
     event.preventDefault();
 
-    setItems((items) => [...items, newItemValue]);
+    const nextItems = [...items, newItemValue];
+
+    setHistory((history) => [...history, items]);
+    setItems(nextItems);
     setNewItemValue("");
     setAddNewItemModalVisible(false);
   }
@@ -40,13 +44,19 @@ function App() {
   }
 
   function deleteItems() {
-    setItems((items) =>
-      items.filter((_item, idx) => !itemIndexesToDelete.includes(idx))
+    const nextItems = items.filter(
+      (_item, idx) => !itemIndexesToDelete.includes(idx)
     );
+
+    setHistory((history) => [...history, items]);
+    setItems(nextItems);
   }
 
   function deleteItem(index: number) {
-    setItems((items) => items.filter((_item, idx) => idx !== index));
+    const nextItems = items.filter((_item, idx) => idx !== index);
+
+    setHistory((history) => [...history, items]);
+    setItems(nextItems);
   }
 
   return (
