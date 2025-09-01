@@ -4,6 +4,7 @@ import { RiResetRightFill } from "react-icons/ri";
 function App() {
   const [items, setItems] = useState<string[]>([]);
   const [newItemValue, setNewItemValue] = useState<string>("");
+  const [itemIndexesToDelete, setItemIndexesToDelete] = useState<number[]>([]);
   const [isAddNewItemModalVisible, setAddNewItemModalVisible] =
     useState<boolean>(false);
 
@@ -31,6 +32,19 @@ function App() {
     setAddNewItemModalVisible(false);
   }
 
+  function addItemToDelete(index: number) {
+    setItemIndexesToDelete((itemIndexesToDelete) => [
+      ...itemIndexesToDelete,
+      index,
+    ]);
+  }
+
+  function deleteItems() {
+    setItems((items) =>
+      items.filter((_item, idx) => !itemIndexesToDelete.includes(idx))
+    );
+  }
+
   return (
     <main>
       <div className="surface">
@@ -46,8 +60,12 @@ function App() {
           <p>No items yet</p>
         ) : (
           <ul className="list">
-            {items.map((item) => (
-              <li className="list__item" key={item}>
+            {items.map((item, idx) => (
+              <li
+                className="list__item"
+                key={item}
+                onClick={() => addItemToDelete(idx)}
+              >
                 {item}
               </li>
             ))}
@@ -57,7 +75,13 @@ function App() {
           <button className="button">
             <RiResetRightFill />
           </button>
-          <button className="button">Delete</button>
+          <button
+            className="button"
+            disabled={itemIndexesToDelete.length === 0}
+            onClick={deleteItems}
+          >
+            Delete
+          </button>
           <button className="button" onClick={handleOpenAddNewItemModal}>
             Add
           </button>
@@ -75,6 +99,7 @@ function App() {
               <div className="add-new-item-form__actions">
                 <button onClick={handleCancelProcess}>Cancel</button>
                 <button
+                  type="submit"
                   onClick={handleAddItemSubmit}
                   disabled={newItemValue === ""}
                 >
