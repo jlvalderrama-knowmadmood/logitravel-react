@@ -37,10 +37,11 @@ function App() {
   }
 
   function addItemToDelete(index: number) {
-    setItemIndexesToDelete((itemIndexesToDelete) => [
-      ...itemIndexesToDelete,
-      index,
-    ]);
+    const itemsToDelete = itemIndexesToDelete.includes(index)
+      ? itemIndexesToDelete.filter((itemIndex) => itemIndex !== index)
+      : [...itemIndexesToDelete, index];
+
+    setItemIndexesToDelete(itemsToDelete);
   }
 
   function deleteItems() {
