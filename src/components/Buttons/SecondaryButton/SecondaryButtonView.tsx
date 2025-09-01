@@ -1,7 +1,10 @@
 import Button from "../BaseButton";
 
+import "./secondary-button-styles.scss";
+
 type SecondaryButtonProps = {
   type?: "button" | "submit" | "reset";
+  extraClass?: string;
   disabled?: boolean;
   children: React.ReactNode;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -10,12 +13,15 @@ type SecondaryButtonProps = {
 function SeconaryButtonView({
   type = "button",
   disabled = false,
+  extraClass = "",
   children,
   onClick,
 }: SecondaryButtonProps) {
+  const className = `button--secondary ${extraClass}`.trimEnd();
+
   return (
     <Button
-      extraClass="button--secondary"
+      extraClass={className}
       onClick={onClick}
       type={type}
       disabled={disabled}

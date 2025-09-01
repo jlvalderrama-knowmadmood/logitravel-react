@@ -1,0 +1,38 @@
+@use "./../../styles/tokens";
+
+.add-item-modal-overlay {
+    background-color: #00000044;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.add-item-modal {
+    background-color: tokens.$modal-surface;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 250px));
+    z-index: 10;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 5px 12px #0000001F;
+    width: 40%;
+
+    &__form-input {
+        padding: 19px 21px;
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 400;
+        margin-bottom: 25px;
+        background-color: tokens.$list-surface;
+        border: 1px solid tokens.$on-list-surface;
+        width: 100%;
+    }
+
+    &__form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+}

@@ -1,5 +1,7 @@
 import BaseButton from "../BaseButton";
 
+import "./primary-button-styles.scss";
+
 type PrimaryButtonProps = {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;

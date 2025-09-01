@@ -1,0 +1,33 @@
+@use "./../../styles/tokens";
+
+.item-list-panel {
+    background-color: tokens.$modal-surface;
+    color: tokens.$on-modal-surface;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 50px;
+    border: 1px solid #CCCCCC;
+    border-radius: 20px;
+    box-shadow: 0 5px 12px #0000001F;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__header {
+        margin-bottom: 35px;
+        text-align: center;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 12px;
+
+        .button:last-child {
+            margin-left: auto;
+        }
+    }
+}

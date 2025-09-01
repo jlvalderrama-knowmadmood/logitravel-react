@@ -3,6 +3,8 @@ import { useState } from "react";
 import AddItemModal from "./components/AddItemModal";
 import ItemListPanel from "./components/ItemListPanel";
 
+import "./app-styles.scss";
+
 function App() {
   const [items, setItems] = useState<string[]>([]);
   const [itemIndexesToDelete, setItemIndexesToDelete] = useState<number[]>([]);

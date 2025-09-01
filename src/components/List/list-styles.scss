@@ -1,0 +1,31 @@
+@use "./../../styles/tokens";
+
+.list {
+    border: 1px solid #cccccc;
+    background-color: #f8f8f8;
+    list-style-type: none;
+    margin-bottom: 30px;
+    padding: 11px;
+
+    &--no-items {
+        margin-bottom: 30px;
+    }
+
+    &__item {
+        padding: 12px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #00000008;
+        }
+    }
+
+    &__item--selected {
+        background-color: tokens.$primary;
+        color: tokens.$on-primary;
+
+        &:hover {
+            background-color: darken(tokens.$primary, 10);
+        }
+    }
+}

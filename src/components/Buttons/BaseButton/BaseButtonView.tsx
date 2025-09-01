@@ -1,3 +1,5 @@
+import "./base-button-styles.scss";
+
 type BaseButtonViewProps = {
   children: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -13,7 +15,8 @@ function BaseButtonView({
   onClick,
   children,
 }: BaseButtonViewProps) {
-  const className = `button ${extraClass}`.trimEnd();
+  const disabledClass = disabled ? "button--disabled" : "";
+  const className = `button ${extraClass} ${disabledClass}`.trimEnd();
 
   return (
     <button

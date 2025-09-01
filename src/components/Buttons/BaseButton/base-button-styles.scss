@@ -1,0 +1,22 @@
+.button {
+    background-color: transparent;
+    border-style: solid;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 16px;
+    height: 49px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border-color: transparent;
+    cursor: pointer;
+
+    &--disabled:hover {
+        cursor: not-allowed;
+    }
+}
+
+.button:not(.button--with-icon) {
+    min-width: 138px;
+}

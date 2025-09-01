@@ -1,0 +1,13 @@
+@use "./styles/tokens";
+@use "./styles/base.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: tokens.$background;
+    min-height: 100vh;
+}

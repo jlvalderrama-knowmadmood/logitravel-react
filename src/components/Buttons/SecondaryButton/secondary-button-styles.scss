@@ -1,0 +1,11 @@
+@use "./../../../styles/tokens";
+
+.button--secondary {
+    border-color: tokens.$primary;
+    color: tokens.$primary;
+
+    &:not(.button--disabled):hover {
+        border-color: darken(tokens.$primary, 10);
+        color: darken(tokens.$primary, 10)
+    }
+}

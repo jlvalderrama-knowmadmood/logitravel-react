@@ -3,6 +3,8 @@ import { RiResetRightFill } from "react-icons/ri";
 import List from "../List";
 import { PrimaryButton, SecondaryButton } from "../Buttons";
 
+import "./items-list-panel-styles.scss";
+
 type ItemListPanelProps = {
   items: string[];
   itemIndexesToDelete: number[];
@@ -23,25 +25,26 @@ function ItemListPanelView({
   openAddItemModal,
 }: ItemListPanelProps) {
   return (
-    <div className="surface">
-      <div className="surface__header">
+    <div className="item-list-panel">
+      <header className="item-list-panel__header">
         <h1 className="title-1">This is a technical proof</h1>
         <p className="text">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos in
           recusandae, corporis ullam debitis cumque cum tempora ipsa. Quasi,
           accusamus?
         </p>
-      </div>
+      </header>
       <List
         items={items}
         itemIndexesToDelete={itemIndexesToDelete}
         addItemToDelete={addItemToDelete}
         deleteItem={deleteItem}
       />
-      <div className="actions">
+      <div className="item-list-panel__actions">
         <SecondaryButton
           onClick={applyLastHistoryState}
           disabled={history.length === 0}
+          extraClass="button--with-icon"
         >
           <RiResetRightFill />
         </SecondaryButton>

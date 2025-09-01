@@ -14,7 +14,7 @@ function ListView({
   itemIndexesToDelete,
 }: ListProps) {
   if (items.length === 0) {
-    return <p>No items yet</p>;
+    return <p className="list--no-items">No items yet</p>;
   }
 
   return (
