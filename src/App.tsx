@@ -61,6 +61,15 @@ function App() {
     setItems(nextItems);
   }
 
+  function applyLastHistoryState() {
+    if (history.length === 0) return;
+
+    const previousState = history[history.length - 1];
+
+    setItems(previousState);
+    setHistory((history) => history.slice(0, -1));
+  }
+
   return (
     <main>
       <div className="surface">
@@ -89,7 +98,11 @@ function App() {
           </ul>
         )}
         <div className="actions">
-          <button className="button">
+          <button
+            className="button"
+            onClick={applyLastHistoryState}
+            disabled={history.length === 0}
+          >
             <RiResetRightFill />
           </button>
           <button
