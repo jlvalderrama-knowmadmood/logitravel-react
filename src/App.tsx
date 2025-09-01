@@ -81,22 +81,11 @@ function App() {
             accusamus?
           </p>
         </div>
-        {items.length === 0 ? (
-          <p>No items yet</p>
-        ) : (
-          <ul className="list">
-            {items.map((item, idx) => (
-              <li
-                className="list__item"
-                key={`${item}-${idx}`}
-                onClick={() => addItemToDelete(idx)}
-                onDoubleClick={() => deleteItem(idx)}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        )}
+        <List
+          items={items}
+          addItemToDelete={addItemToDelete}
+          deleteItem={deleteItem}
+        />
         <div className="actions">
           <button
             className="button"
@@ -139,6 +128,33 @@ function App() {
         ) : null}
       </div>
     </main>
+  );
+}
+
+type ListProps = {
+  items: string[];
+  addItemToDelete: (index: number) => void;
+  deleteItem: (index: number) => void;
+};
+
+function List({ items, addItemToDelete, deleteItem }: ListProps) {
+  if (items.length === 0) {
+    return <p>No items yet</p>;
+  }
+
+  return (
+    <ul className="list">
+      {items.map((item, idx) => (
+        <li
+          className="list__item"
+          key={`${item}-${idx}`}
+          onClick={() => addItemToDelete(idx)}
+          onDoubleClick={() => deleteItem(idx)}
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
   );
 }
 
