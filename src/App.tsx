@@ -45,6 +45,10 @@ function App() {
     );
   }
 
+  function deleteItem(index: number) {
+    setItems((items) => items.filter((_item, idx) => idx !== index));
+  }
+
   return (
     <main>
       <div className="surface">
@@ -65,6 +69,7 @@ function App() {
                 className="list__item"
                 key={item}
                 onClick={() => addItemToDelete(idx)}
+                onDoubleClick={() => deleteItem(idx)}
               >
                 {item}
               </li>
