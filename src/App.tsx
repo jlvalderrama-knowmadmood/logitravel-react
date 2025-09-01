@@ -25,7 +25,11 @@ function App() {
     setAddNewItemModalVisible(true);
   }
 
-  function handleCancelProcess(event: React.MouseEvent<HTMLButtonElement>) {}
+  function handleCancelProcess(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    setNewItemValue("");
+    setAddNewItemModalVisible(false);
+  }
 
   return (
     <main>
