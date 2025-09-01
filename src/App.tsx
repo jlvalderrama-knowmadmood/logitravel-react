@@ -9,11 +9,21 @@ function App() {
 
   function handleNewItemValueChange(
     event: React.ChangeEvent<HTMLInputElement>
-  ) {}
+  ) {
+    setNewItemValue(event.target.value);
+  }
 
-  function handleAddItemSubmit(event: React.FormEvent) {}
+  function handleAddItemSubmit(event: React.FormEvent) {
+    event.preventDefault();
 
-  function handleOpenAddNewItemModal() {}
+    setItems((items) => [...items, newItemValue]);
+    setNewItemValue("");
+    setAddNewItemModalVisible(false);
+  }
+
+  function handleOpenAddNewItemModal() {
+    setAddNewItemModalVisible(true);
+  }
 
   function handleCancelProcess(event: React.MouseEvent<HTMLButtonElement>) {}
 
