@@ -67,7 +67,7 @@ function App() {
             {items.map((item, idx) => (
               <li
                 className="list__item"
-                key={item}
+                key={`${item}-${idx}`}
                 onClick={() => addItemToDelete(idx)}
                 onDoubleClick={() => deleteItem(idx)}
               >
