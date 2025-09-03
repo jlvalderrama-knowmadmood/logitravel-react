@@ -1,3 +1,3 @@
-import ItemListPanel from "./ItemListPanelView";
+import ItemListPanel from "./ItemsListPanel";
 
 export default ItemListPanel;

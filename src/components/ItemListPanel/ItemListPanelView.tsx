@@ -8,6 +8,8 @@ import "./items-list-panel-styles.scss";
 type ItemListPanelProps = {
   items: string[];
   itemIndexesToDelete: number[];
+  canDelete: boolean;
+  canUndo: boolean;
   addItemToDelete: (index: number) => void;
   deleteItem: (index: number) => void;
   applyLastHistoryState: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -18,6 +20,8 @@ type ItemListPanelProps = {
 function ItemListPanelView({
   items,
   addItemToDelete,
+  canDelete,
+  canUndo,
   deleteItem,
   applyLastHistoryState,
   itemIndexesToDelete,
@@ -43,15 +47,12 @@ function ItemListPanelView({
       <div className="item-list-panel__actions">
         <SecondaryButton
           onClick={applyLastHistoryState}
-          disabled={history.length === 0}
+          disabled={!canUndo}
           extraClass="button--with-icon"
         >
           <RiResetRightFill />
         </SecondaryButton>
-        <SecondaryButton
-          disabled={itemIndexesToDelete.length === 0}
-          onClick={deleteItems}
-        >
+        <SecondaryButton disabled={!canDelete} onClick={deleteItems}>
           Delete
         </SecondaryButton>
         <PrimaryButton onClick={openAddItemModal}>Add</PrimaryButton>
