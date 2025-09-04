@@ -18,7 +18,7 @@ function AddItemModalView({ submit, close }: AddItemModalProps) {
   }
 
   return (
-    <div className="add-item-modal-overlay">
+    <div className="add-item-modal-overlay" role="dialog">
       <div className="add-item-modal">
         <h2 className="title-2">Add item to list</h2>
         <form
