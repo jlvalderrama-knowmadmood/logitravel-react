@@ -64,4 +64,23 @@ describe("App", () => {
     expect(within(list).queryByText(/third item/i)).toBeNull();
     expect(list.children).toHaveLength(1);
   });
+
+  it("should delete an item by double clicking on it", async () => {
+    const user = userEvent.setup();
+
+    renderWithProviders(<App />);
+
+    await openAddItemModalViaUI();
+    await addItemViaUI("First item");
+
+    await openAddItemModalViaUI();
+    await addItemViaUI("Second item");
+
+    const list = screen.getByRole("list");
+
+    await user.dblClick(within(list).getByText(/second item/i));
+
+    expect(list.children).toHaveLength(1);
+    expect(within(list).queryByText(/second item/i)).toBeNull();
+  });
 });
