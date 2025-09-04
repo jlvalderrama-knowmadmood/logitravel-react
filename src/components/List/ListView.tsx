@@ -1,18 +1,18 @@
 import "./list-styles.scss";
 
-type ListProps = {
+type ListViewProps = {
   items: string[];
-  itemIndexesToDelete: number[];
+  calculateListItemExtraClass: (index: number) => string;
   addItemToDelete: (index: number) => void;
   deleteItem: (index: number) => void;
 };
 
 function ListView({
   items,
+  calculateListItemExtraClass,
   addItemToDelete,
   deleteItem,
-  itemIndexesToDelete,
-}: ListProps) {
+}: ListViewProps) {
   if (items.length === 0) {
     return <p className="list--no-items">No items yet</p>;
   }
@@ -21,9 +21,7 @@ function ListView({
     <ul className="list">
       {items.map((item, idx) => (
         <li
-          className={`list__item ${
-            itemIndexesToDelete.includes(idx) ? "list__item--selected" : ""
-          }`}
+          className={calculateListItemExtraClass(idx)}
           key={`${item}-${idx}`}
           onClick={() => addItemToDelete(idx)}
           onDoubleClick={() => deleteItem(idx)}

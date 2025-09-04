@@ -6,25 +6,17 @@ import { PrimaryButton, SecondaryButton } from "../Buttons";
 import "./items-list-panel-styles.scss";
 
 type ItemListPanelProps = {
-  items: string[];
-  itemIndexesToDelete: number[];
   canDelete: boolean;
   canUndo: boolean;
-  addItemToDelete: (index: number) => void;
-  deleteItem: (index: number) => void;
   applyLastHistoryState: (event: React.MouseEvent<HTMLButtonElement>) => void;
   deleteItems: (event: React.MouseEvent<HTMLButtonElement>) => void;
   openAddItemModal: () => void;
 };
 
 function ItemListPanelView({
-  items,
-  addItemToDelete,
   canDelete,
   canUndo,
-  deleteItem,
   applyLastHistoryState,
-  itemIndexesToDelete,
   deleteItems,
   openAddItemModal,
 }: ItemListPanelProps) {
@@ -38,12 +30,7 @@ function ItemListPanelView({
           accusamus?
         </p>
       </header>
-      <List
-        items={items}
-        itemIndexesToDelete={itemIndexesToDelete}
-        addItemToDelete={addItemToDelete}
-        deleteItem={deleteItem}
-      />
+      <List />
       <div className="item-list-panel__actions">
         <SecondaryButton
           onClick={applyLastHistoryState}

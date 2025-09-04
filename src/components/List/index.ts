@@ -1,3 +1,3 @@
-import List from "./ListView";
+import List from "./List";
 
 export default List;

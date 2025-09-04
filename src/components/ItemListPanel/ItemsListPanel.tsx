@@ -4,27 +4,10 @@ import ItemListPanelView from "./ItemListPanelView";
 
 function ItemsListPanel() {
   const { open } = useAddItemModalActions();
-  const {
-    items,
-    selected,
-    canDelete,
-    canUndo,
-    toggleSelect,
-    deleteOne,
-    deleteSelected,
-    undo,
-  } = useItems();
-
-  function addItemToDelete(index: number) {
-    toggleSelect(index);
-  }
+  const { canDelete, canUndo, deleteSelected, undo } = useItems();
 
   function deleteItems() {
     deleteSelected();
-  }
-
-  function deleteItem(index: number) {
-    deleteOne(index);
   }
 
   function applyLastHistoryState() {
@@ -33,13 +16,9 @@ function ItemsListPanel() {
 
   return (
     <ItemListPanelView
-      items={items}
       canDelete={canDelete}
       canUndo={canUndo}
-      addItemToDelete={addItemToDelete}
-      deleteItem={deleteItem}
       applyLastHistoryState={applyLastHistoryState}
-      itemIndexesToDelete={selected}
       deleteItems={deleteItems}
       openAddItemModal={open}
     />
