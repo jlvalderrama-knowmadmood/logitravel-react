@@ -6,6 +6,7 @@ type SecondaryButtonProps = {
   type?: "button" | "submit" | "reset";
   extraClass?: string;
   disabled?: boolean;
+  ariaLabel?: string;
   children: React.ReactNode;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
@@ -14,6 +15,7 @@ function SeconaryButtonView({
   type = "button",
   disabled = false,
   extraClass = "",
+  ariaLabel,
   children,
   onClick,
 }: SecondaryButtonProps) {
@@ -25,6 +27,7 @@ function SeconaryButtonView({
       onClick={onClick}
       type={type}
       disabled={disabled}
+      ariaLabel={ariaLabel}
     >
       {children}
     </Button>

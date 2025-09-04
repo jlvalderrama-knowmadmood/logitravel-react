@@ -33,6 +33,7 @@ function ItemListPanelView({
       <List />
       <div className="item-list-panel__actions">
         <SecondaryButton
+          ariaLabel="Undo"
           onClick={applyLastHistoryState}
           disabled={!canUndo}
           extraClass="button--with-icon"

@@ -6,11 +6,13 @@ type BaseButtonViewProps = {
   type?: "submit" | "reset" | "button";
   disabled?: boolean;
   extraClass?: string;
+  ariaLabel?: string;
 };
 
 function BaseButtonView({
   type = "button",
   extraClass = "",
+  ariaLabel,
   disabled = false,
   onClick,
   children,
@@ -24,6 +26,7 @@ function BaseButtonView({
       disabled={disabled}
       className={className}
       onClick={onClick}
+      aria-label={ariaLabel}
     >
       {children}
     </button>

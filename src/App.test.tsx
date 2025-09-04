@@ -83,4 +83,27 @@ describe("App", () => {
     expect(list.children).toHaveLength(1);
     expect(within(list).queryByText(/second item/i)).toBeNull();
   });
+
+  it("should restore the previous item states", async () => {
+    const user = userEvent.setup();
+
+    renderWithProviders(<App />);
+
+    await openAddItemModalViaUI();
+    await addItemViaUI("First item");
+
+    await openAddItemModalViaUI();
+    await addItemViaUI("Second item");
+
+    await user.dblClick(screen.getByText(/second item/i));
+
+    const list = screen.getByRole("list");
+    expect(list.children).toHaveLength(1);
+    expect(within(list).queryByText(/second item/i)).toBeNull();
+
+    await user.click(screen.getByRole("button", { name: /undo/i }));
+
+    expect(list.children).toHaveLength(2);
+    expect(within(list).getByText(/second item/i)).toBeVisible();
+  });
 });
