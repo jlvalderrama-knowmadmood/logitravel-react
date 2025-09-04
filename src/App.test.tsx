@@ -4,25 +4,35 @@ import userEvent from "@testing-library/user-event";
 import { renderWithProviders } from "./test/test-utils";
 import App from "./App";
 
+async function openAddItemModalViaUI() {
+  const user = userEvent.setup();
+  const openAddItemModalButton = screen.getByText("Add");
+
+  await user.click(openAddItemModalButton);
+}
+
+async function addItemViaUI(itemText: string) {
+  const user = userEvent.setup();
+  const input = screen.getByPlaceholderText(/type the text here.../i);
+  const form = input.closest("form")!;
+  const addButton = within(form).getByText("Add");
+
+  await user.type(input, itemText);
+  await user.click(addButton);
+}
+
 describe("App", () => {
   it("should add a new item and render it in the list", async () => {
-    const user = userEvent.setup();
-
     renderWithProviders(<App />);
 
     const noItemsYet = screen.getByText(/no items yet/i);
     expect(noItemsYet).toBeVisible();
 
-    await user.click(screen.getByText("Add"));
+    await openAddItemModalViaUI();
 
     expect(screen.getByRole("dialog")).not.toBeNull();
 
-    const input = screen.getByPlaceholderText(/type the text here.../i);
-    const form = input.closest("form")!;
-    const addButton = within(form).getByText("Add");
-
-    await user.type(input, "First item");
-    await user.click(addButton);
+    await addItemViaUI("First item");
 
     const list = screen.getByRole("list");
 
