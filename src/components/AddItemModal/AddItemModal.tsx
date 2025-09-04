@@ -6,7 +6,7 @@ function AddItemModal() {
   const { close, isOpen } = useAddItemModal();
   const { addItem } = useItemsActions();
 
-  if (!isOpen) return;
+  if (!isOpen) return null;
 
   const handleSubmit = (event: React.FormEvent, newItem: string) => {
     event.preventDefault();
