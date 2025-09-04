@@ -1,14 +1,13 @@
 import { useItems } from "../../context/items";
+import { calculateListItemExtraClass } from "./list-helpers/";
 import ListView from "./ListView";
 import ListEmpty from "./ListEmpty";
 
 function List() {
   const { items, toggleSelect, deleteOne, selected } = useItems();
 
-  function calculateListItemExtraClass(index: number) {
-    return `list__item ${
-      selected.includes(index) ? "list__item--selected" : ""
-    }`;
+  function handleCalculateListItemExtraClass(index: number) {
+    return calculateListItemExtraClass(selected, index);
   }
 
   if (items.length === 0) {
@@ -20,7 +19,7 @@ function List() {
       items={items}
       addItemToDelete={toggleSelect}
       deleteItem={deleteOne}
-      calculateListItemExtraClass={calculateListItemExtraClass}
+      calculateListItemExtraClass={handleCalculateListItemExtraClass}
     />
   );
 }
