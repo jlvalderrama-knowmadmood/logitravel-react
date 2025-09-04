@@ -40,4 +40,28 @@ describe("App", () => {
     expect(within(list).getByText(/first item/i)).toBeVisible();
     expect(list.children).toHaveLength(1);
   });
+
+  it("should delete the selected items", async () => {
+    renderWithProviders(<App />);
+
+    await openAddItemModalViaUI();
+    await addItemViaUI("First item");
+
+    await openAddItemModalViaUI();
+    await addItemViaUI("Second item");
+
+    await openAddItemModalViaUI();
+    await addItemViaUI("Third item");
+
+    const list = screen.getByRole("list");
+    expect(list.children).toHaveLength(3);
+
+    await userEvent.click(within(list).getByText(/second item/i));
+    await userEvent.click(within(list).getByText(/third item/i));
+    await userEvent.click(screen.getByText("Delete"));
+
+    expect(within(list).queryByText(/second item/i)).toBeNull();
+    expect(within(list).queryByText(/third item/i)).toBeNull();
+    expect(list.children).toHaveLength(1);
+  });
 });
