@@ -22,6 +22,22 @@ async function addItemViaUI(itemText: string) {
 }
 
 describe("App", () => {
+  it("should, by default, have the 'Undo', 'Delete' and 'Add' buttons disabled", async () => {
+    const user = userEvent.setup();
+
+    renderWithProviders(<App />);
+
+    expect(screen.getByRole("button", { name: /undo/i })).toBeDisabled();
+    expect(screen.getByText("Delete")).toBeDisabled();
+
+    await user.click(screen.getByText("Add"));
+
+    const modal = screen.getByRole("dialog");
+    const addItemButton = within(modal).getByText("Add");
+
+    expect(addItemButton).toBeDisabled();
+  });
+
   it("should add a new item and render it in the list", async () => {
     renderWithProviders(<App />);
 
