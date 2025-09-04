@@ -1,11 +1,9 @@
+import { useAddItemModalActions } from "../../context/add-item-modal";
 import { useItems } from "../../context/items/";
 import ItemListPanelView from "./ItemListPanelView";
 
-function ItemsListPanel({
-  openAddNewWindowModal,
-}: {
-  openAddNewWindowModal: () => void;
-}) {
+function ItemsListPanel() {
+  const { open } = useAddItemModalActions();
   const {
     items,
     selected,
@@ -43,7 +41,7 @@ function ItemsListPanel({
       applyLastHistoryState={applyLastHistoryState}
       itemIndexesToDelete={selected}
       deleteItems={deleteItems}
-      openAddItemModal={openAddNewWindowModal}
+      openAddItemModal={open}
     />
   );
 }

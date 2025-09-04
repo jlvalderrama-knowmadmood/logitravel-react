@@ -1,3 +1,3 @@
-import AddItemModal from "./AddItemModalView";
+import AddItemModal from "./AddItemModal";
 
 export default AddItemModal;
