@@ -15,8 +15,8 @@ export const ActionTypes = {
 
 export type ItemsActions =
   | { type: typeof ActionTypes.ADD_ITEM; payload: { value: string } }
-  | { type: "DELETE_ONE"; payload: { index: number } }
-  | { type: "DELETE_SELECTED" }
-  | { type: "TOGGLE_SELECT"; payload: { index: number } }
-  | { type: "CLEAR_SELECTION" }
-  | { type: "UNDO" };
+  | { type: typeof ActionTypes.DELETE_ONE; payload: { index: number } }
+  | { type: typeof ActionTypes.DELETE_SELECTED }
+  | { type: typeof ActionTypes.TOGGLE_SELECT; payload: { index: number } }
+  | { type: typeof ActionTypes.CLEAR_SELECTION }
+  | { type: typeof ActionTypes.UNDO };
