@@ -43,6 +43,7 @@ function reducer(state: State, action: ItemsActions): State {
           ...state.items.filter((_item, idx) => idx !== action.payload.index),
         ],
         history: [...state.history, state.items],
+        selected: [],
       };
 
     case ActionTypes.DELETE_SELECTED:
