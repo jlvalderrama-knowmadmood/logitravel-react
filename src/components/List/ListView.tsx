@@ -13,15 +13,11 @@ function ListView({
   addItemToDelete,
   deleteItem,
 }: ListViewProps) {
-  if (items.length === 0) {
-    return <p className="list--no-items">No items yet</p>;
-  }
-
   return (
     <ul className="list">
       {items.map((item, idx) => (
         <li
-          className={calculateListItemExtraClass(idx)}
+          className={`list__item ${calculateListItemExtraClass(idx)}`}
           key={`${item}-${idx}`}
           onClick={() => addItemToDelete(idx)}
           onDoubleClick={() => deleteItem(idx)}
